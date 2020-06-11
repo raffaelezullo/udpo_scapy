@@ -51,10 +51,8 @@ udpo_pkt_4th_cs[UDP].chksum = fourth_chksum
 pay_plus_opt_plus_cco = pay + opt + cco_aligned
 if (pay_len%2):
 	pay_plus_opt_plus_cco = pay + opt + cco_unaligned
-udpo_pkt_cco = udp_pkt.copy()           
-udpo_pkt_cco[Raw].load=pay_plus_opt_plus_cco                # Use CS from packet w/o Options but adds Options and CCO
-udpo_pkt_cco[UDP].len = udp_pkt[UDP].len
-udpo_pkt_cco[UDP].chksum = udp_pkt[UDP].chksum
+udpo_pkt_cco = (IP(dst=dest_addr)/UDP(sport=source_port, dport=dest_port, len=pay_len)/Raw(load=pay_plus_opt_plus_cco))      # contains UDPO CCO
+
 
 # send
 send(udpo_pkt_correct_cs)
