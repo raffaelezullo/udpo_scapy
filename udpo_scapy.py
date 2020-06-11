@@ -26,10 +26,9 @@ del udpo_pkt[UDP].chksum
 udpo_pkt = udpo_pkt.__class__(bytes(udpo_pkt))
 
 # Correct CS
-udpo_pkt_correct_cs = udp_pkt.copy()				
-udpo_pkt_correct_cs[Raw].load = pay_plus_opt				# Use CS from packet w/o Options but adds Options
-udpo_pkt_correct_cs[UDP].len = udp_pkt[UDP].len
-udpo_pkt_correct_cs[UDP].chksum = udp_pkt[UDP].chksum
+udpo_pkt_correct_cs = udpo_pkt.copy()				
+udpo_pkt_correct_cs[UDP].len = udp_pkt[UDP].len 			
+udpo_pkt_correct_cs[UDP].chksum = udp_pkt[UDP].chksum 		# Use CS from packet w/o Options but adds Options
 
 # IP Payload CS
 udpo_pkt_ippay_cs = udpo_pkt.copy()							# Use CS computed on Payload and Options
