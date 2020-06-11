@@ -42,7 +42,7 @@ udpo_pkt_3rd_cs[UDP].chksum = third_chksum
 	
 # 4th Checksum
 udpo_pkt_4th_cs = udpo_pkt_correct_cs.copy()        
-fourth_chksum = udp_pkt[UDP].chksum - opt_len   # Offset with Correct CS 
+fourth_chksum = udp_pkt[UDP].chksum - opt_len               # Offset with Correct CS 
 if (fourth_chksum<0):
 	fourth_chksum += 0xffff
 udpo_pkt_4th_cs[UDP].chksum = fourth_chksum
