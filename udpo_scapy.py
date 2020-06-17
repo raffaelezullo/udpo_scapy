@@ -6,7 +6,7 @@ dest_addr = "216.58.204.78" # google.com
 dest_port = 80
 source_port = 45678
 
-pay = "abcdefgh"                # Change it your custom UDP payload
+pay = "abcdefgh"                # Change it to your custom UDP payload
 pay_len = len(pay) + 8
 
 opt = b'\x02\x04\x05\xc0'   	# UDP MSS option
